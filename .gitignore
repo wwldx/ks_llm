@@ -1,0 +1,29 @@
+# Local datasets and generated outputs
+datasets/
+data/
+outputs/
+checkpoints/
+models/
+runs/
+wandb/
+
+# Large data/model artifacts
+*.parquet
+*.jsonl
+*.arrow
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.ckpt
+
+# Python/cache artifacts
+__pycache__/
+*.pyc
+.DS_Store
+
+# Env files
+.env
+.venv/
+venv/
+

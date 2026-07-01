@@ -18,6 +18,7 @@
 - `OneReason英文原文阅读指南.md`：按英文原文页码组织的阅读路线和比赛落地建议。
 - `docs/COMPETITION_INFO.md`：比赛入口、时间、算力领取和待确认信息。
 - `docs/DATASET.md`：Hugging Face 数据集结构、字段理解和下载方式。
+- `docs/FINE_TUNING_NOTES.md`：万擎模型精调任务、样本选择和费用观察。
 
 ## 当前关键信息
 
@@ -26,7 +27,8 @@
 - 常规资源领取：每周三上午 10:00。
 - 参赛前置事项：完成万擎平台实名认证，加入赛事沟通群。
 - 初赛基座：`OpenOneRec/OneReason-0.8B-pretrain-competition`。
-- 数据源：`OpenOneRec/Explorer_LLM_Rec_Competition`，约 17.2GB，不应提交到 Git。
+- 数据源有两层：Hugging Face 全量/公开数据源约 17.2GB；当前按比赛操作手册下载到本地的精调数据包位于 `dataset/`，落盘约 436MB。
+- 本地 `dataset/` 已被 `.gitignore` 忽略，不应提交到 Git。
 
 ## 建议目录
 
@@ -42,10 +44,9 @@
 ## 第一阶段行动
 
 1. 完成万擎实名认证并领取算力。
-2. 下载 Hugging Face 数据集的 `demo/`，先跑通样例。
-3. 下载全量数据到 `datasets/Explorer_LLM_Rec_Competition/`。
-4. 写数据审计脚本：样本量、domain 分布、token 合法性、历史长度、target 泄漏检查。
-5. 跑通官方 baseline SFT。
+2. 用本地 `dataset/` 中的小样本先跑通万擎精调 baseline。
+3. 写数据审计脚本：样本量、domain 分布、token 合法性、历史长度、target 泄漏检查。
+4. 控制精调费用，先从 `懂推荐` 的 100/500/1000 条子集验证流程，不要一开始全选 19k 条。
+5. 跑通官方 baseline SFT 后，再考虑下载 Hugging Face 全量数据。
 6. 构造第一版 `unCoT` 直接推荐样本。
 7. 小比例加入 R3 CoT 样本，扫描 CoT/unCoT 配比。
-

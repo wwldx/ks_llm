@@ -1,5 +1,7 @@
 # Local datasets and generated outputs
 datasets/
+dataset/
+dataset_subsets/
 data/
 outputs/
 checkpoints/
@@ -26,4 +28,3 @@ __pycache__/
 .env
 .venv/
 venv/
-
